@@ -7,55 +7,72 @@ body {
 
 header {
     background-color: #333;
-    color: white;
-    padding: 10px 0;
+    color: #fff;
+    padding: 10px;
     text-align: center;
 }
 
-h1 {
-    margin: 0;
-}
-
-#carrito {
+#contenedor-carrito {
     margin-top: 10px;
+
 }
 
 main {
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+#contenedor-productos{
+    display: flex;
+    justify-content: space-around;
     padding: 20px;
+    margin: 20px;
+    flex-wrap: wrap;
 }
 
 .producto {
-    background-color: white;
     border: 1px solid #ccc;
-    padding: 20px;
-    width: 30%;
+    background-color: #fff;
+    padding: 15px;
+    margin: 15px;
+    width: 200px;
     text-align: center;
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="number"] {
+.imagen-producto {
+    width: 100%; /* Ajusta el ancho de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 200px; /* Tamaño máximo de la imagen */
+    display: block;
+    margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio inferior */
+}
+
+.producto h3 {
+    margin-bottom: 10px;
+}
+
+.producto p {
+    margin: 5px 0;
+}
+
+.producto input {
     width: 50px;
-    margin-top: 10px;
+    text-align: center;
 }
 
-button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
+.producto button {
+    margin-top: 10px;
+    padding: 5px 10px;
     cursor: pointer;
-    margin-top: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s;
 }
 
-button:hover {
+.producto button:hover {
     background-color: #555;
-}
-
-#finalizar-compra {
-    margin-top: 10px;
-    padding: 10px 20px;
 }

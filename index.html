@@ -3,50 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Tienda</title>
+    <title>eCommerce Básico</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Mi Tienda</h1>
-        <div id="carrito">
-            <p>Carrito: <span id="cantidad-carrito">0</span> productos</p>
+        <h1>Libros FIUBA</h1>
+        <div id="contenedor-carrito">
+            <p>Productos en tu carrito: <span id="cantidad-carrito">0</span></p>
             <p>Total: $<span id="total-carrito">0.00</span></p>
             <button id="finalizar-compra">Finalizar Compra</button>
+            <p id="mensaje-confirmacion" style="display: none; color: green; margin-top: 10px;"></p>
         </div>
     </header>
+
     <main>
-        <div class="producto">
-            <h2>Producto 1</h2>
-            <p>Precio: $100</p>
-            <input type="number" min="0" value="0" id="producto1-cantidad">
-            <button onclick="agregarAlCarrito(1, 100)">Agregar al carrito</button>
-        </div>
-        <div class="producto">
-            <h2>Producto 2</h2>
-            <p>Precio: $150</p>
-            <input type="number" min="0" value="0" id="producto2-cantidad">
-            <button onclick="agregarAlCarrito(2, 150)">Agregar al carrito</button>
-        </div>
-        <div class="producto">
-            <h2>Producto 3</h2>
-            <p>Precio: $200</p>
-            <input type="number" min="0" value="0" id="producto3-cantidad">
-            <button onclick="agregarAlCarrito(3, 200)">Agregar al carrito</button>
-        </div>
-        <div class="producto">
-            <h2>Producto 4</h2>
-            <p>Precio: $250</p>
-            <input type="number" min="0" value="0" id="producto4-cantidad">
-            <button onclick="agregarAlCarrito(4, 250)">Agregar al carrito</button>
-        </div>
-        <div class="producto">
-            <h2>Producto 5</h2>
-            <p>Precio: $300</p>
-            <input type="number" min="0" value="0" id="producto5-cantidad">
-            <button onclick="agregarAlCarrito(5, 300)">Agregar al carrito</button>
-        </div>
+        <div id="contenedor-productos"></div>
     </main>
-    <script src="script.js"></script>
+
+
+    <script src="script.js" defer></script>
 </body>
 </html>

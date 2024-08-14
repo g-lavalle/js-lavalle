@@ -1,0 +1,49 @@
+// Inicialización del carrito
+let carrito = JSON.parse(sessionStorage.getItem('carrito'));
+actualizarCarrito();
+
+function agregarAlCarrito(productoId, precio) {
+    // Obtiene la cantidad seleccionada por el usuario
+    const cantidadInput = document.getElementById(`producto${productoId}-cantidad`);
+    const cantidad = parseInt(cantidadInput.value);
+
+    // Si la cantidad es mayor a 0, se procede a agregar al carrito
+    if (cantidad > 0) {
+        // Si el producto ya está en el carrito, se suma la cantidad
+        if (carrito[productoId]) {
+            carrito[productoId].cantidad += cantidad;
+        } else {
+            // Si el producto no está en el carrito, se agrega con la cantidad seleccionada
+            carrito[productoId] = { precio: precio, cantidad: cantidad };
+        }
+
+        sessionStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarCarrito();
+    }
+}
+
+//Función para actualizar la visualización del carrito.  Muestra la cantidad total de productos y el costo total.
+function actualizarCarrito() {
+    let cantidadCarrito = 0;  // Contador para la cantidad total de productos en el carrito
+    let totalCarrito = 0;     // Acumulador para el costo total del carrito
+
+    // Recorre cada producto en el carrito para sumar cantidades y calcular el total
+    for (let productoId in carrito) {
+        cantidadCarrito += carrito[productoId].cantidad;
+        totalCarrito += carrito[productoId].precio * carrito[productoId].cantidad;
+    }
+
+    // Actualiza el DOM para mostrar la cantidad total de productos y el costo total
+    document.getElementById('cantidad-carrito').innerText = cantidadCarrito;
+    document.getElementById('total-carrito').innerText = totalCarrito.toFixed(2); // Redondea a 2 decimales
+}
+
+// Finalizar la compra
+document.getElementById('finalizar-compra').addEventListener('click', () => {
+    alert(`El total de su compra es $${document.getElementById('total-carrito').innerText}`);
+
+    // Limpia el carrito al finalizar la compra
+    sessionStorage.removeItem('carrito');
+    carrito = {}; // Resetea el carrito en memoria
+    actualizarCarrito();
+});
