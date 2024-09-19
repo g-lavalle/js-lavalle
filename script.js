@@ -1,4 +1,4 @@
-const productos = [
+/* const productos = [
     { id: 1, nombre: "Análisis numérico", precio: 10000, descripcion: "Burden", imagen: "img/analisis-numerico.jpeg", departamento: "Matematica" },
     { id: 2, nombre: "Álgebra Lineal 2", precio: 15000, descripcion: "Exactas UBA", imagen: "img/algebra-lineal-2.png", departamento: "Matematica" },
     { id: 3, nombre: "FÍsica I", precio: 20000, descripcion: "Sears Zemansky", imagen: "img/fisica1.jpg", departamento: "Fisica" },
@@ -7,9 +7,21 @@ const productos = [
     { id: 6, nombre: "Termodinámica", precio: 35000, descripcion: "Cengel", imagen: "img/termo.jpg", departamento: "Mecanica" },
     { id: 7, nombre: "M.C.I.A", precio: 31000, descripcion: "Payri", imagen: "img/mcia.png", departamento: "Mecanica" },
     { id: 8, nombre: "Operaciones", precio: 20000, descripcion: "Render", imagen: "img/operaciones.jpg", departamento: "Gestion" }
-];
-
+];*/
 let carrito = JSON.parse(sessionStorage.getItem('carrito')) || [];
+let productos = [];
+
+    fetch('productos.json')
+        .then(response => response.json())
+        .then(data => {
+            productos = data;
+            mostrarProductos();
+        })
+        .catch(() => {
+            mostrarSweetAlert('error', 'No se pudo cargar los productos.');
+        });
+
+
 
 function mostrarProductos() {
     const contenedorProductos = document.getElementById('contenedor-productos');
